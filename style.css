@@ -1,0 +1,28 @@
+*{
+	font-family: Consolas, Arial, Helvetica;
+}
+blockquote{
+	border-left: 3px solid #ccc;
+	padding-left: 10px;
+}
+.bookmarklet{
+    background: #f1f1f1;
+    border: 1px solid #b1b1b1;
+    border-radius: 4px;
+    box-shadow: 0 2px 0 0 #6f6f6f;
+    color: #2a2a2a;
+    cursor: move;
+    display: inline-block;
+    font-size: 18px;
+    padding: 12px 24px;
+    position: relative;
+    text-decoration: none;
+}
+#url{
+	width: 50%;
+	height: 30px;
+}
+#customData{
+	width: 50%;
+	min-height: 100px;
+}
