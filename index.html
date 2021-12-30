@@ -1,7 +1,7 @@
 <div>
 	<h2>Bookmarklet - eInvoice-ComDeploy</h2>
 	<h3>Drag button to Bookmark Bar:</h3>
-	<a href="" class="bookmarklet" id="bookmarklet">eInvoice-ComDeploy-2.0</a>
+	<a href="" class="bookmarklet" id="bookmarklet">eInvoice-ComDeploy-2.1</a>
 </div>
 <h3><strong>Dùng để Khởi tạo thật</strong></h3>
 <p>1. Sử dụng bookmark tại trang <a href="https://quantridichvu-hddt.vnpt-invoice.com.vn/">https://quantridichvu-hddt.vnpt-invoice.com.vn/</a></p>
@@ -10,7 +10,7 @@
 <script>
 	function deploy(){
 		return `
-const configArisingDate = {
+        const configArisingDate = {
     name: "ArisingDate",
     id: "0",
     value: '1'
@@ -127,12 +127,12 @@ async function processCom(taxCode){
 	let responseDomain = await requestDomain(comInfo);
 	if (responseDomain) {
 		updateOverlayLog("Hoàn tất Tạo domain thật");
-		updateOverlayLog('<a id="actionArisingDate'+comInfo.taxCode+'" href="" style="color: #62b9ec; text-decoration: underline;">Lùi ngày</a>');
+		updateOverlayLog('<a id="actionArisingDate'+comInfo.taxCode+'" data-comid="'+comInfo.comId+'" href="#" style="color: #62b9ec; text-decoration: underline;">Lùi ngày</a>');
 		updateOverlayLog('<a target="_blank" href="https://quantridichvu-hddt.vnpt-invoice.com.vn/Initialization/CustomersReal?keyword=' + comInfo.taxCode + '&areaId=0&sysType=0&statustype=34&initType=0" style="color: #35bb52; text-decoration: underline;">Xem công ty</a>');
 		let button = document.getElementById('actionArisingDate'+comInfo.taxCode);
 		button.addEventListener('click', (e) => {
 			e.preventDefault();
-			configMail(comInfo.comId, configArisingDate);
+			configMail(this.getAttribute("data-comid"), configArisingDate);
 			alert("Hoàn thành");
 		})
 	}
@@ -395,6 +395,7 @@ if (document.URL.indexOf("quantridichvu-hddt.vnpt-invoice.com.vn") > 0) {
         "https://quantridichvu-hddt.vnpt-invoice.com.vn/Initialization/CustomersTest?keyword=&areaId=0&sysType=0&statustype=12"
     );
 }
+
 
 `;
 	}	

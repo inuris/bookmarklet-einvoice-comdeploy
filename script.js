@@ -115,12 +115,12 @@ async function processCom(taxCode){
 	let responseDomain = await requestDomain(comInfo);
 	if (responseDomain) {
 		updateOverlayLog("Hoàn tất Tạo domain thật");
-		updateOverlayLog('<a id="actionArisingDate'+comInfo.taxCode+'" href="" style="color: #62b9ec; text-decoration: underline;">Lùi ngày</a>');
+		updateOverlayLog('<a id="actionArisingDate'+comInfo.taxCode+'" data-comid="'+comInfo.comId+'" href="#" style="color: #62b9ec; text-decoration: underline;">Lùi ngày</a>');
 		updateOverlayLog('<a target="_blank" href="https://quantridichvu-hddt.vnpt-invoice.com.vn/Initialization/CustomersReal?keyword=' + comInfo.taxCode + '&areaId=0&sysType=0&statustype=34&initType=0" style="color: #35bb52; text-decoration: underline;">Xem công ty</a>');
 		let button = document.getElementById('actionArisingDate'+comInfo.taxCode);
 		button.addEventListener('click', (e) => {
 			e.preventDefault();
-			configMail(comInfo.comId, configArisingDate);
+			configMail(this.getAttribute("data-comid"), configArisingDate);
 			alert("Hoàn thành");
 		})
 	}
