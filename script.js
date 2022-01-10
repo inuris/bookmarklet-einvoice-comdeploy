@@ -120,7 +120,7 @@ async function processCom(taxCode){
 		let button = document.getElementById('actionArisingDate'+comInfo.taxCode);
 		button.addEventListener('click', (e) => {
 			e.preventDefault();
-			configMail(this.getAttribute("data-comid"), configArisingDate);
+			configMail(e.currentTarget.getAttribute("data-comid"), configArisingDate);
 			alert("Hoàn thành");
 		})
 	}
